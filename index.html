@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>CITY SKIN 城市皮肤</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Helvetica, Arial, "PingFang SC", sans-serif;
+}
+
+body{
+  background:#000;
+  overflow:hidden;
+  color:#fff;
+}
+
+/* ================= NAV ================= */
+.nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:18px 40px;
+  display:flex;
+  justify-content:space-between;
+  z-index:1000;
+  font-size:12px;
+  mix-blend-mode:difference;
+}
+
+.nav span{
+  margin-left:20px;
+  cursor:pointer;
+  opacity:0.6;
+}
+.nav span:hover{opacity:1;}
+
+/* ================= 外层横向 ================= */
+.container{
+  width:500vw;
+  height:100vh;
+  display:flex;
+  transition:1s ease;
+}
+
+.page{
+  width:100vw;
+  height:100vh;
+}
+
+/* ================= HOME ================= */
+.home{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.home h1{
+  font-size:80px;
+  font-weight:200;
+  letter-spacing:8px;
+}
+
+.home p{
+  margin-top:20px;
+  opacity:0.6;
+}
+
+/* ================= 城市页 ================= */
+.city{
+  height:100vh;
+  overflow-y:auto;
+  padding:80px 60px;
+}
+
+/* 标题 */
+.header h2{
+  font-size:40px;
+  font-weight:200;
+  letter-spacing:4px;
+}
+
+.header p{
+  margin-top:10px;
+  opacity:0.6;
+}
+
+/* ================= 卡片 ================= */
+.group{
+  margin-top:60px;
+}
+
+/* 卡片结构 */
+.card{
+  display:flex;
+  gap:30px;
+  padding:30px;
+  border:1px solid rgba(255,255,255,0.08);
+  margin-bottom:30px;
+}
+
+/* 左信息 */
+.card-left{
+  width:35%;
+}
+
+.card-left h3{
+  font-size:20px;
+  font-weight:300;
+  margin-bottom:10px;
+}
+
+.card-left .author{
+  font-size:12px;
+  opacity:0.5;
+  margin-bottom:15px;
+}
+
+.card-left .desc{
+  font-size:13px;
+  line-height:1.6;
+  opacity:0.7;
+}
+
+/* 右宫格 */
+.grid{
+  width:50%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.grid img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  cursor:pointer;
+  filter:grayscale(100%);
+  transition:0.3s;
+}
+
+.grid img:hover{
+  filter:grayscale(0%);
+  transform:scale(1.02);
+}
+
+/* ================= 放大层 ================= */
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.92);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.lightbox img{
+  max-width:85%;
+  max-height:85%;
+}
+
+/* ================= dots（保留城市内滑动） ================= */
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div>CITY SKIN / 城市皮肤</div>
+  <div>
+    <span onclick="go(0)">首页</span>
+    <span onclick="go(1)">北京</span>
+    <span onclick="go(2)">天津</span>
+    <span onclick="go(3)">广东</span>
+    <span onclick="go(4)">甘肃</span>
+  </div>
+</div>
+
+<div class="container" id="container">
+
+<!-- ================= HOME ================= -->
+<section class="page home">
+  <h1>CITY SKIN</h1>
+  <p>Black & White Photography Exhibition</p>
+</section>
+
+<!-- ================= 北京 ================= -->
+<section class="page city">
+
+<div class="header">
+  <h2>北京</h2>
+  <p>权力结构 / 黑白对比 / 历史压缩</p>
+</div>
+
+<!-- ===== CARD 1 ===== -->
+<div class="card">
+
+  <div class="card-left">
+    <h3>城市权力结构</h3>
+    <div class="author">摄影师：Zhang Wei</div>
+    <div class="desc">
+      北京城市结构在高对比黑白影像中呈现出压缩的几何秩序。
+    </div>
+  </div>
+
+  <div class="grid">
+    <img src="images/yangshu/001.jpg" onclick="openImg(this)">
+    <img src="images/yangshu/002.jpg" onclick="openImg(this)">
+    <img src="images/yangshu/003.jpg" onclick="openImg(this)">
+    <img src="images/yangshu/004.jpg" onclick="openImg(this)">
+  </div>
+
+</div>
+
+<!-- ===== CARD 2 ===== -->
+<div class="card">
+  <div class="card-left">
+    <h3>历史残影</h3>
+    <div class="author">摄影师：Li Ming</div>
+    <div class="desc">
+      城市边缘的光影记录时间沉积。
+    </div>
+  </div>
+
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" onclick="openImg(this)">
+    <img src="https://images.unsplash.com/photo-1491884662610-dfcd28f30cfb" onclick="openImg(this)">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" onclick="openImg(this)">
+    <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66" onclick="openImg(this)">
+  </div>
+</div>
+
+<!-- ===== CARD 2 ===== -->
+<div class="card">
+  <div class="card-left">
+    <h3>历史残影</h3>
+    <div class="author">摄影师：Li Ming</div>
+    <div class="desc">
+      城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。城市边缘的光影记录时间沉积。
+    </div>
+  </div>
+
+  <div class="grid">
+    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" onclick="openImg(this)">
+    <img src="https://images.unsplash.com/photo-1491884662610-dfcd28f30cfb" onclick="openImg(this)">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" onclick="openImg(this)">
+    <img src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66" onclick="openImg(this)">
+  </div>
+</div>
+<!-- 可以继续复制 CARD 3-6（结构相同） -->
+
+</section>
+
+<!-- ================= 天津 ================= -->
+<section class="page city">
+<div class="header"><h2>天津</h2><p>水系 / 工业 / 反射</p></div>
+
+<div class="card">
+  <div class="card-left">
+    <h3>河流工业</h3>
+    <div class="author">Wang Hao</div>
+    <div class="desc">水面与工业结构的交叠影像。</div>
+  </div>
+
+  <div class="grid">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+  </div>
+</div>
+
+<!-- 再复制5个 card -->
+
+</section>
+
+<!-- ================= 广东 ================= -->
+<section class="page city">
+<div class="header"><h2>广东</h2><p>密度 / 流动 / 噪点</p></div>
+
+<div class="card">
+  <div class="card-left">
+    <h3>城市噪声</h3>
+    <div class="author">Chen Yu</div>
+    <div class="desc">高密度城市的视觉流动。</div>
+  </div>
+
+  <div class="grid">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+  </div>
+</div>
+
+</section>
+
+<!-- ================= 甘肃 ================= -->
+<section class="page city">
+<div class="header"><h2>甘肃</h2><p>风化 / 空间 / 退场</p></div>
+
+<div class="card">
+  <div class="card-left">
+    <h3>风化地貌</h3>
+    <div class="author">Zhao Lei</div>
+    <div class="desc">时间在空间中的沉积状态。</div>
+  </div>
+
+  <div class="grid">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b">
+    <img onclick="openImg(this)" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+  </div>
+</div>
+
+</section>
+
+</div>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+  <img id="lb">
+</div>
+
+<script>
+
+let index = 0;
+const container = document.getElementById("container");
+
+function go(i){
+  index = i;
+  container.style.transform = `translateX(-${i * 100}vw)`;
+}
+
+function openImg(img){
+  document.getElementById("lb").src = img.src;
+  document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeImg(){
+  document.getElementById("lightbox").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
